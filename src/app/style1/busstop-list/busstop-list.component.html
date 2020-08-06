@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col-xs-4">
             <p>Results found for "<span style="color: blue;">{{busStopName}}</span>" <span *ngIf="busStopList"> are {{busStopList.length}}</span></p>
+            <app-loading-animation *ngIf="isLoading"></app-loading-animation>
             <ul class="list-group" *ngFor="let station of busStopList">
                 <li
                 style="cursor: pointer;"

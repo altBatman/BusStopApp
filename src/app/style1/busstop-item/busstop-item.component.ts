@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 export class BusstopItemComponent implements OnInit, OnDestroy{
   id: number;
   name: string;
+  isLoading: boolean;
   serverError: boolean;
   private serverErrorSubscription: Subscription;
   errorMessage: string;
@@ -20,6 +21,8 @@ export class BusstopItemComponent implements OnInit, OnDestroy{
   constructor(private route: ActivatedRoute, private router: Router, private query: QueryService) { }
 
   ngOnInit(): void {
+    this.isLoading= true;
+
     this.route.params.subscribe((params: Params)=>{
       this.query.getStationData(params['id']);
       this.id = +params['id'];
@@ -29,13 +32,16 @@ export class BusstopItemComponent implements OnInit, OnDestroy{
     this.planSubsription = this.query.stationPlanSubject
       .subscribe((planRecieved)=>{
         this.planList = planRecieved;
+        this.isLoading= false;
       }, (error)=>{
         this.errorMessage= error;
+        this.isLoading= false;
       });
 
     this.serverErrorSubscription = this.query.stationErrorSubject.subscribe((data)=>{
       this.serverError= data[0]; 
-      this.errorMessage= data[1]; 
+      this.errorMessage= data[1];
+      this.isLoading= false;
     });
   };
 

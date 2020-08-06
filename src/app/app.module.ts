@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,7 @@ import { BusstopListComponent } from './style1/busstop-list/busstop-list.compone
 import { NopageFoundComponent } from './nopage-found/nopage-found.component';
 import { BusstopItemComponent } from './style1/busstop-item/busstop-item.component';
 import { StationErrorComponent } from './style1/busstop-item/station-error/station-error.component';
+import { LoadingAnimationComponent } from './style1/loading-animation/loading-animation.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,13 @@ import { StationErrorComponent } from './style1/busstop-item/station-error/stati
     BusstopListComponent,
     NopageFoundComponent,
     BusstopItemComponent,
-    StationErrorComponent
+    StationErrorComponent,
+    LoadingAnimationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

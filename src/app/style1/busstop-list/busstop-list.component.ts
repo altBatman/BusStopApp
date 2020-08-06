@@ -12,16 +12,19 @@ import { Station } from 'src/app/shared/station.model';
 export class BusstopListComponent implements OnInit, OnDestroy{
   busStopName: string;
   busStopList: Station[];
+  isLoading: boolean;
   private busStopListSubscription = new Subscription;
   constructor(private query: QueryService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.busStopListSubscription = this.route.params.subscribe((params: Params)=>{
       this.busStopName = params['stopName'];
       this.query.getList(params['stopName']);
     });
 
     this.query.busStopListSubject.subscribe((data)=>{
+      this.isLoading = false;
       this.busStopList = data;
     });
   }

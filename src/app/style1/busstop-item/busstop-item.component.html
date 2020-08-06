@@ -1,5 +1,8 @@
 <div class="row">
     <div class="container-fluid">
+        <!-- Loading Animation -->
+        <app-loading-animation *ngIf="isLoading"></app-loading-animation>
+        <!-- Error Message component -->
         <app-station-error *ngIf="serverError; else new" [errorText]="errorMessage"></app-station-error>
 
         <ng-template #new style="margin-top: 20px;">
