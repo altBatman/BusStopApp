@@ -8,18 +8,19 @@ import { BusstopItemComponent } from './style1/busstop-item/busstop-item.compone
 
 
 const routes: Routes = [
+  {path:"", redirectTo:"/search", pathMatch:'full'},
   {
-    path: "style1", 
+    path: "search", 
     component:Style1Component,
     children: [
-      {path: "stoplist", component:BusstopListComponent, 
+      {path: ":stopName", component:BusstopListComponent, 
         children:[
           {path: ":id", component:BusstopItemComponent}
         ]
       },
     ]
   },
-  {path: "style2", component:Style2Component},
+  {path: "search2", component:Style2Component},
   {path: "**", component: NopageFoundComponent}
 ];
 

@@ -1,1 +1,23 @@
-<p>BusStop Id  {{id}} {{name}}</p>
+<div class="row">
+    <div class="container-fluid">
+        <app-station-error *ngIf="serverError; else new" [errorText]="errorMessage"></app-station-error>
+
+        <ng-template #new style="margin-top: 20px;">
+            <ul class="list-group" *ngFor="let station of planList">
+                <a class="list-group-item list-group-item-action flex-column align-items-start" 
+                    [class.isBus]="station.mode.title==='Bus'"
+                    [class.isTram] = "station.mode.title === 'Straßenbahn'"
+                    [class.isBahn] = "station.mode.title === 'S-Bahn'"
+                    [class.isZug] = "station.mode.title === 'Zug'"
+                >
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{station.direction}}</h5>
+                        <small><img [src]="station.mode.iconUrl"></small>
+                    </div>
+                    <p class="mb-1">{{station.mode.title}}-{{station.line}}</p>
+                    <small>Arrival in {{station.arrivalTimeRelative}} mins</small>
+                </a>
+            </ul>
+        </ng-template>
+    </div>
+</div>

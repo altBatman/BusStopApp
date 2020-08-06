@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { QueryService } from '../shared/query.service';
 
 @Component({
   selector: 'app-style1',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Style1Component implements OnInit {
 
-  constructor() { }
+  @ViewChild('searchTerm') searchTerm;
+
+  constructor(private router: Router, private route: ActivatedRoute, private query: QueryService) { }
 
   ngOnInit(): void {
+  }
+
+  onSearch(){
+    if(this.searchTerm.nativeElement.value){
+      this.router.navigate([this.searchTerm.nativeElement.value], {relativeTo: this.route});
+    }
   }
 
 }

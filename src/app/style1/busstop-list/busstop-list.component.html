@@ -1,9 +1,19 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <p>Bus Stop List Comes here</p>
+        <div class="col-xs-4">
+            <p>Results found for "<span style="color: blue;">{{busStopName}}</span>" <span *ngIf="busStopList"> are {{busStopList.length}}</span></p>
+            <ul class="list-group" *ngFor="let station of busStopList">
+                <li
+                style="cursor: pointer;"
+                class="list-group-item clearfix"
+                [routerLink]="station.id"
+                routerLinkActive="active"
+                >
+                    <h6 class="list-group-item-heading">{{ station.name }}<span class="badge"> --{{ station.city }}</span></h6>
+                </li>
+            </ul>
         </div>
-        <div class="col-md-9">
+        <div class="col-xs-8">
             <router-outlet></router-outlet>
         </div>
     </div>

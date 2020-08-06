@@ -1,0 +1,23 @@
+.list-group{
+    width: 30em;
+}
+.container-fluid{
+    margin-top: 40px;
+}
+
+.list-group-item{
+    background-color: rgba(184, 184, 148,0.2);
+}
+
+.isBus{
+    background-color: rgba(51, 102, 255,0.5);
+}
+.isTram{
+    background-color: rgba(255,0,0,0.2);
+}
+.isZug{
+    background-color: rgba(60,200,64,0.3)
+}
+.isBahn{
+    background-color: rgba(0, 255, 64,0.8);
+}

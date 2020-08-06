@@ -1,8 +1,8 @@
 <div class="container">
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Busstop" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <input #searchTerm type="text" class="form-control" placeholder="Bus stop" aria-label="Recipient's username" aria-describedby="basic-addon2" (keydown.enter)="onSearch()">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button"><span class="fa fa-search"></span></button>
+          <button class="btn btn-outline-secondary" type="button" (click)="onSearch()"><span class="fa fa-search"> Search</span></button>
         </div>
     </div>
 </div>
