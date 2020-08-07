@@ -40,7 +40,7 @@ export class QueryService {
                 this.stationPlanSubject.next([...this.stationPlan]);
             }, (err) =>{
                 this.stationErrorSubject.next([true, err.error]);
-                console.log(`Server Connection not possible in item ${err.error}`);
+                console.log(`Server Connection not possible for item component-- ${err.error}`);
             })
     }
 

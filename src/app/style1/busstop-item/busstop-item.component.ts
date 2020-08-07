@@ -39,8 +39,7 @@ export class BusstopItemComponent implements OnInit, OnDestroy{
       });
 
     this.serverErrorSubscription = this.query.stationErrorSubject.subscribe((data)=>{
-      this.serverError= data[0]; 
-      this.errorMessage= data[1];
+      [this.serverError, this.errorMessage]= data;
       this.isLoading= false;
     });
   };

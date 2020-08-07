@@ -5,21 +5,20 @@
         <!-- Error Message component -->
         <app-station-error *ngIf="serverError; else new" [errorText]="errorMessage"></app-station-error>
 
-        <ng-template #new style="margin-top: 20px;">
-            <ul class="list-group" *ngFor="let station of planList">
-                <a class="list-group-item list-group-item-action flex-column align-items-start" 
-                    [class.isBus]="station.mode.title==='Bus'"
-                    [class.isTram] = "station.mode.title === 'Straßenbahn'"
-                    [class.isBahn] = "station.mode.title === 'S-Bahn'"
-                    [class.isZug] = "station.mode.title === 'Zug'"
+        <ng-template #new>
+            <ul class="card-deck" *ngFor="let station of planList">
+                <div class="card"
+                [class.isBus]="station.mode.title==='Bus'"
+                [class.isTram] = "station.mode.title === 'Straßenbahn'"
+                [class.isBahn] = "station.mode.title === 'S-Bahn'"
+                [class.isZug] = "station.mode.title === 'Zug'"
                 >
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">{{station.direction}}</h5>
-                        <small><img [src]="station.mode.iconUrl"></small>
+                    <div class="card-body">
+                        <h5 class="card-title">{{station.direction}}<small><img [src]="station.mode.iconUrl" class="float-right"></small></h5>
+                        <p class="card-text">{{station.mode.title}}-{{station.line}}, Arrival in {{station.arrivalTimeRelative}} mins</p>
+                        <p class="card-text"><small class="text-muted">Platform: {{ station.hasOwnProperty('platform') ? station.platform.name : "Unknown"}}</small></p>
                     </div>
-                    <p class="mb-1">{{station.mode.title}}-{{station.line}}</p>
-                    <small>Arrival in {{station.arrivalTimeRelative}} mins</small>
-                </a>
+                    </div>
             </ul>
         </ng-template>
     </div>

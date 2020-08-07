@@ -1,11 +1,7 @@
-.list-group{
-    width: 30em;
-}
 .container-fluid{
     margin-top: 40px;
 }
-
-.list-group-item{
+.card-body{
     background-color: rgba(184, 184, 148,0.2);
 }
 
